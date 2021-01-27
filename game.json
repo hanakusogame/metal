@@ -1,0 +1,255 @@
+{
+	"width": 1280,
+	"height": 720,
+	"fps": 30,
+	"main": "./script/_bootstrap.js",
+	"assets": {
+		"player": {
+			"type": "image",
+			"width": 384,
+			"height": 256,
+			"path": "image/player.png"
+		},
+		"shot": {
+			"type": "image",
+			"width": 120,
+			"height": 50,
+			"path": "image/shot.png"
+		},
+		"se": {
+			"type": "audio",
+			"path": "audio/se",
+			"systemId": "sound",
+			"duration": 250
+		},
+		"_bootstrap": {
+			"type": "script",
+			"path": "script/_bootstrap.js",
+			"global": true
+		},
+		"main": {
+			"type": "script",
+			"path": "script/main.js",
+			"global": true
+		},
+		"parameterObject": {
+			"type": "script",
+			"path": "script/parameterObject.js",
+			"global": true
+		},
+		"MainGame": {
+			"type": "script",
+			"path": "script/MainGame.js",
+			"global": true
+		},
+		"number": {
+			"type": "image",
+			"width": 728,
+			"height": 128,
+			"path": "image/number.png"
+		},
+		"MainScene": {
+			"type": "script",
+			"path": "script/MainScene.js",
+			"global": true
+		},
+		"score": {
+			"type": "image",
+			"width": 192,
+			"height": 192,
+			"path": "image/score.png"
+		},
+		"start": {
+			"type": "image",
+			"width": 800,
+			"height": 500,
+			"path": "image/start.png"
+		},
+		"time": {
+			"type": "image",
+			"width": 76,
+			"height": 76,
+			"path": "image/time.png"
+		},
+		"config": {
+			"type": "image",
+			"width": 40,
+			"height": 40,
+			"path": "image/config.png"
+		},
+		"volume": {
+			"type": "image",
+			"width": 64,
+			"height": 32,
+			"path": "image/volume.png"
+		},
+		"Button": {
+			"type": "script",
+			"path": "script/Button.js",
+			"global": true
+		},
+		"Config": {
+			"type": "script",
+			"path": "script/Config.js",
+			"global": true
+		},
+		"glyph": {
+			"type": "text",
+			"path": "text/glyph.json"
+		},
+		"number_red": {
+			"type": "image",
+			"width": 728,
+			"height": 128,
+			"path": "image/number_red.png"
+		},
+		"bgm": {
+			"type": "audio",
+			"path": "audio/bgm",
+			"systemId": "music",
+			"duration": 30000
+		},
+		"se_start": {
+			"type": "audio",
+			"path": "audio/se_start",
+			"systemId": "sound",
+			"duration": 1701
+		},
+		"se_timeup": {
+			"type": "audio",
+			"path": "audio/se_timeup",
+			"systemId": "sound",
+			"duration": 1080
+		},
+		"title": {
+			"type": "image",
+			"width": 1280,
+			"height": 720,
+			"path": "image/title.png"
+		},
+		"tank": {
+			"type": "image",
+			"width": 800,
+			"height": 603,
+			"path": "image/tank.png"
+		},
+		"fighter": {
+			"type": "image",
+			"width": 800,
+			"height": 602,
+			"path": "image/fighter.png"
+		},
+		"Enemy": {
+			"type": "script",
+			"path": "script/Enemy/Enemy.js",
+			"global": true
+		},
+		"Fighter": {
+			"type": "script",
+			"path": "script/Enemy/Fighter.js",
+			"global": true
+		},
+		"Soldier": {
+			"type": "script",
+			"path": "script/Enemy/Soldier.js",
+			"global": true
+		},
+		"Tank": {
+			"type": "script",
+			"path": "script/Enemy/Tank.js",
+			"global": true
+		},
+		"zero": {
+			"type": "image",
+			"width": 500,
+			"height": 344,
+			"path": "image/zero.png"
+		},
+		"soldier": {
+			"type": "image",
+			"width": 384,
+			"height": 256,
+			"path": "image/soldier.png"
+		},
+		"floor": {
+			"type": "image",
+			"width": 512,
+			"height": 512,
+			"path": "image/floor.png"
+		},
+		"fighter2": {
+			"type": "image",
+			"width": 800,
+			"height": 602,
+			"path": "image/fighter2.png"
+		},
+		"tank2": {
+			"type": "image",
+			"width": 800,
+			"height": 603,
+			"path": "image/tank2.png"
+		},
+		"werpon": {
+			"type": "image",
+			"width": 384,
+			"height": 256,
+			"path": "image/werpon.png"
+		},
+		"Player": {
+			"type": "script",
+			"path": "script/Player.js",
+			"global": true
+		},
+		"effect": {
+			"type": "image",
+			"width": 640,
+			"height": 512,
+			"path": "image/effect.png"
+		},
+		"wall": {
+			"type": "image",
+			"width": 800,
+			"height": 603,
+			"path": "image/wall.png"
+		},
+		"Wall": {
+			"type": "script",
+			"path": "script/Enemy/Wall.js",
+			"global": true
+		},
+		"sniper": {
+			"type": "image",
+			"width": 384,
+			"height": 256,
+			"path": "image/sniper.png"
+		},
+		"Sniper": {
+			"type": "script",
+			"path": "script/Enemy/Sniper.js",
+			"global": true
+		},
+		"Zero": {
+			"type": "script",
+			"path": "script/Enemy/Zero.js",
+			"global": true
+		}
+	},
+	"moduleMainScripts": {
+		"@akashic-extension/akashic-timeline": "node_modules/@akashic-extension/akashic-timeline/lib/index.js"
+	},
+	"environment": {
+		"sandbox-runtime": "3",
+		"niconico": {
+			"supportedModes": [
+				"ranking"
+			]
+		}
+	},
+	"globalScripts": [
+		"node_modules/@akashic-extension/akashic-timeline/lib/ActionType.js",
+		"node_modules/@akashic-extension/akashic-timeline/lib/Easing.js",
+		"node_modules/@akashic-extension/akashic-timeline/lib/Timeline.js",
+		"node_modules/@akashic-extension/akashic-timeline/lib/Tween.js",
+		"node_modules/@akashic-extension/akashic-timeline/lib/index.js"
+	]
+}
