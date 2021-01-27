@@ -27,6 +27,13 @@ export class Sniper extends Enemy {
 
 		this.sprImage = spr;
 
+		this.onUpdate.add(() => {
+			if (this.life <= 0 && this.y < 500) {
+				this.y += 20;
+			}
+			this.modified();
+		});
+
 		const sprDie = new g.FrameSprite({
 			scene: scene,
 			x: 0,
@@ -44,7 +51,7 @@ export class Sniper extends Enemy {
 
 		this.sprImageDie = sprDie;
 
-		this.collisitonArea = new g.FilledRect({
+		this.collisionArea = new g.FilledRect({
 			scene: scene,
 			x: 16,
 			y: 16,

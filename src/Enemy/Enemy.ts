@@ -4,7 +4,7 @@ import { MainScene } from "../MainScene";
 export class Enemy extends g.E {
 	public sprImage: g.E;
 	public sprImageDie: g.E;
-	public collisitonArea: g.FilledRect;
+	public collisionArea: g.FilledRect;
 	public die: () => void;
 	public readonly op = 0;
 	public score = 200;
@@ -63,8 +63,8 @@ export class Enemy extends g.E {
 
 	//ショットとのあたり判定
 	public collision = (shot: g.E): boolean => {
-		if (this.life <= 0 || !this.collisitonArea) return false;
-		const c = this.collisitonArea;
+		if (this.life <= 0 || !this.collisionArea) return false;
+		const c = this.collisionArea;
 		const p = c.localToGlobal({ x: 0, y: 0 });
 		return g.Collision.intersect(shot.x, shot.y, shot.width, shot.height, p.x, p.y, c.width, c.height);
 	};

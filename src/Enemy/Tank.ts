@@ -32,7 +32,7 @@ export class Tank extends Enemy {
 		this.sprImageDie.hide();
 
 		//当たり判定用
-		this.collisitonArea = new g.FilledRect({
+		this.collisionArea = new g.FilledRect({
 			scene: scene,
 			x: 350,
 			y: 200,

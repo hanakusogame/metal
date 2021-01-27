@@ -45,7 +45,7 @@ export class Soldier extends Enemy {
 
 		this.sprImageDie = sprDie;
 
-		this.collisitonArea = new g.FilledRect({
+		this.collisionArea = new g.FilledRect({
 			scene: scene,
 			x: 16,
 			y: 16,

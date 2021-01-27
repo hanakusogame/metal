@@ -28,7 +28,7 @@ export class Fighter extends Enemy {
 		});
 		this.sprImageDie.hide();
 
-		this.collisitonArea = new g.FilledRect({
+		this.collisionArea = new g.FilledRect({
 			scene: scene,
 			x: 200,
 			y: 200,

@@ -28,11 +28,11 @@ export class Zero extends Enemy {
 		});
 		this.sprImageDie.hide();
 
-		this.collisitonArea = new g.FilledRect({
+		this.collisionArea = new g.FilledRect({
 			scene: scene,
-			x: 200,
-			y: 200,
-			width: 250,
+			x: 150,
+			y: 50,
+			width: 150,
 			height: 120,
 			cssColor: "yellow",
 			opacity: this.op,
