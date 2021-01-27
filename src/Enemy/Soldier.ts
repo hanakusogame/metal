@@ -4,12 +4,14 @@ export class Soldier extends Enemy {
 	constructor(base: g.E) {
 		super(base);
 
+		this.order = 1;
+
 		this.y = g.game.random.get(400, 550);
 		this.modified();
 
 		const scene = g.game.scene();
 
-		this.score = 50;
+		this.score = 200;
 		this.life = 30;
 
 		const spr = new g.FrameSprite({

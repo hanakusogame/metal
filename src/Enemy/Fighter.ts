@@ -3,11 +3,12 @@ import { Enemy } from "./Enemy";
 export class Fighter extends Enemy {
 	constructor(base: g.E) {
 		super(base);
+		this.order = 0;
 
 		this.y = g.game.random.get(-200, 0);
 		this.modified();
 
-		this.score = 200;
+		this.score = 2000;
 		this.life = 100;
 
 		const scene = g.game.scene();

@@ -8,7 +8,8 @@ export class Enemy extends g.E {
 	public die: () => void;
 	public readonly op = 0;
 	public score = 200;
-	protected life = 100;
+	public order = 0;
+	public life = 100;
 	protected speed = 10;
 
 	constructor(base: g.E) {

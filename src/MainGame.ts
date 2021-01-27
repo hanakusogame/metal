@@ -159,6 +159,14 @@ export class MainGame extends g.E {
 			if (loopCnt % 900 === 0) {
 				new Wall(enemyBase);
 			}
+
+			//並べ替え
+			enemyBase.children.sort((a, b) => {
+				const aa = a as Enemy;
+				const bb = b as Enemy;
+				return  (aa.order * -10000 + aa.y + aa.sprImage.height) - (bb.order * -10000 + bb.y + bb.sprImage.height);
+			});
+
 			loopCnt++;
 		});
 	}

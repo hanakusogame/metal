@@ -4,11 +4,13 @@ export class Zero extends Enemy {
 	constructor(base: g.E) {
 		super(base);
 
+		this.order = 0;
+
 		this.y = g.game.random.get(-100, 100);
 		this.modified();
 
-		this.score = 200;
-		this.life = 100;
+		this.score = 1000;
+		this.life = 80;
 
 		const scene = g.game.scene();
 		this.sprImage = new g.Sprite({

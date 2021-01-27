@@ -4,10 +4,12 @@ export class Tank extends Enemy {
 	constructor(base: g.E) {
 		super(base);
 
+		this.order = 1;
+
 		this.y = g.game.random.get(0, 230);
 		this.modified();
 
-		this.score = 300;
+		this.score = 1500;
 		this.life = 200;
 
 		const scene = g.game.scene();

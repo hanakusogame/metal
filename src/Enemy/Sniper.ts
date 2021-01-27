@@ -4,13 +4,15 @@ export class Sniper extends Enemy {
 	constructor(base: g.E, x: number, y: number) {
 		super(base);
 
+		this.order = 8;
+
 		this.x = x;
 		this.y = y;
 		this.modified();
 
 		const scene = g.game.scene();
 
-		this.score = 50;
+		this.score = 300;
 		this.life = 30;
 
 		const spr = new g.FrameSprite({
@@ -27,8 +29,10 @@ export class Sniper extends Enemy {
 
 		this.sprImage = spr;
 
+		const posDieY = 450 + g.game.random.get(0, 100);
+
 		this.onUpdate.add(() => {
-			if (this.life <= 0 && this.y < 500) {
+			if (this.life <= 0 && this.y < posDieY) {
 				this.y += 20;
 			}
 			this.modified();
