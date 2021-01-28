@@ -71,6 +71,7 @@ export class Zero extends Enemy {
 			}
 
 			this.speed = this.speed / 2;
+			this.scene.playSound("bomb");
 		};
 
 	}

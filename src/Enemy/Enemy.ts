@@ -10,6 +10,7 @@ export class Enemy extends g.E {
 	public score = 200;
 	public order = 0;
 	public life = 100;
+	public scene: MainScene;
 	protected speed = 10;
 
 	constructor(base: g.E) {
@@ -19,6 +20,8 @@ export class Enemy extends g.E {
 			y: 0,
 			parent: base,
 		});
+
+		this.scene = g.game.scene() as MainScene;
 
 		this.speed = g.game.random.get(6, 12);
 

@@ -42,12 +42,15 @@ export class MainScene extends g.Scene {
 				"bgm",
 				"se_start",
 				"se_timeup",
+				"se_shot",
+				"bomb",
+				"guaa"
 			],
 		});
 
 		const timeline = new tl.Timeline(this);
 		const timeLimit = 120; // 制限時間
-		const isDebug = true;
+		const isDebug = false;
 		let time = 0;
 
 		// 市場コンテンツのランキングモードでは、g.game.vars.gameState.score の値をスコアとして扱います

@@ -71,6 +71,7 @@ export class Sniper extends Enemy {
 
 		this.die = () => {
 			sprDie.start();
+			this.scene.playSound("guaa");
 		};
 
 		this.speed = 2;

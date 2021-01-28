@@ -61,6 +61,7 @@ export class Soldier extends Enemy {
 		this.die = () => {
 			sprDie.start();
 			this.speed = 2;
+			this.scene.playSound("guaa");
 		};
 
 		this.speed = g.game.random.get(4, 8);

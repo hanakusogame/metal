@@ -168,6 +168,8 @@ export class MainGame extends g.E {
 						shot.destroy();
 					}
 				});
+
+				scene.playSound("se_shot");
 			}
 
 			if (loopCnt % 60 === 0) {

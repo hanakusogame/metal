@@ -107,7 +107,7 @@
 			"type": "audio",
 			"path": "audio/bgm",
 			"systemId": "music",
-			"duration": 30000
+			"duration": 53732
 		},
 		"se_start": {
 			"type": "audio",
@@ -130,7 +130,7 @@
 		"tank": {
 			"type": "image",
 			"width": 800,
-			"height": 603,
+			"height": 547,
 			"path": "image/tank.png"
 		},
 		"fighter": {
@@ -238,6 +238,24 @@
 			"width": 640,
 			"height": 180,
 			"path": "image/bg.png"
+		},
+		"bomb": {
+			"type": "audio",
+			"path": "audio/bomb",
+			"systemId": "sound",
+			"duration": 2555
+		},
+		"guaa": {
+			"type": "audio",
+			"path": "audio/guaa",
+			"systemId": "sound",
+			"duration": 1005
+		},
+		"se_shot": {
+			"type": "audio",
+			"path": "audio/se_shot",
+			"systemId": "sound",
+			"duration": 74
 		}
 	},
 	"moduleMainScripts": {

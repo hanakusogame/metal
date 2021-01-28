@@ -9,7 +9,7 @@ export class Fighter extends Enemy {
 		this.modified();
 
 		this.score = 2000;
-		this.life = 100;
+		this.life = 80;
 
 		const scene = g.game.scene();
 		this.sprImage = new g.Sprite({
@@ -74,6 +74,7 @@ export class Fighter extends Enemy {
 			}
 
 			this.speed = this.speed / 2;
+			this.scene.playSound("bomb");
 		};
 
 		this.speed = g.game.random.get(24, 32);

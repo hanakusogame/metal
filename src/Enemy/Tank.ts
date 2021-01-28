@@ -74,6 +74,7 @@ export class Tank extends Enemy {
 			}
 
 			this.speed = 2;
+			this.scene.playSound("bomb");
 		};
 
 		this.speed = g.game.random.get(3, 5);
