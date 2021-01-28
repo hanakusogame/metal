@@ -15,7 +15,7 @@ export class Enemy extends g.E {
 	constructor(base: g.E) {
 		super({
 			scene: g.game.scene(),
-			x: 2000,
+			x: g.game.width,
 			y: 0,
 			parent: base,
 		});

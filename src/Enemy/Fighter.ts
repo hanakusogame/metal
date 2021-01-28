@@ -5,7 +5,7 @@ export class Fighter extends Enemy {
 		super(base);
 		this.order = 0;
 
-		this.y = g.game.random.get(-200, 0);
+		this.y = g.game.random.get(-250, -100);
 		this.modified();
 
 		this.score = 2000;
@@ -40,9 +40,15 @@ export class Fighter extends Enemy {
 			parent: this,
 		});
 
+		let yy = 5;
+
 		this.onUpdate.add(() => {
 			if (this.life <= 0) {
 				this.y += 20;
+			} else {
+				yy -= 0.2;
+				this.y += yy;
+				this.angle += 0.2;
 			}
 			this.modified();
 		});

@@ -12,6 +12,24 @@ export class MainGame extends g.E {
 		const scene = g.game.scene() as MainScene;
 		super({ scene: scene, width: g.game.width, height: g.game.height, touchable: true });
 
+		//背景
+		const bgBase = new g.E({
+			scene: scene,
+			scaleX: 3,
+			scaleY: 3,
+			parent: this,
+		});
+
+		for (let i = 0; i < 3; i++) {
+			new g.Sprite({
+				scene: scene,
+				src: scene.asset.getImageById("bg"),
+				x: 640 * i,
+				y: 0,
+				parent: bgBase,
+			});
+		}
+
 		//地面を生成
 		const floorSize = 256;
 		let collisionFloor: g.FilledRect;
@@ -90,10 +108,13 @@ export class MainGame extends g.E {
 		//メインループ
 		let loopCnt = 0;
 		this.onUpdate.add(() => {
+			bgBase.x -= 1;
+			bgBase.modified();
+
 			player.werpon.angle = (radian * 180) / Math.PI;
 			player.werpon.modified();
 
-			if (loopCnt % 4 === 0 && isPush) {
+			if (loopCnt % 4 === 0 && isPush && scene.isStart) {
 				//ショットを生成
 				const shot = new g.Sprite({
 					scene: scene,
@@ -164,7 +185,7 @@ export class MainGame extends g.E {
 			enemyBase.children.sort((a, b) => {
 				const aa = a as Enemy;
 				const bb = b as Enemy;
-				return  (aa.order * -10000 + aa.y + aa.sprImage.height) - (bb.order * -10000 + bb.y + bb.sprImage.height);
+				return aa.order * -10000 + aa.y + aa.sprImage.height - (bb.order * -10000 + bb.y + bb.sprImage.height);
 			});
 
 			loopCnt++;

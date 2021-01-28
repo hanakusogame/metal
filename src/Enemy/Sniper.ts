@@ -31,9 +31,12 @@ export class Sniper extends Enemy {
 
 		const posDieY = 450 + g.game.random.get(0, 100);
 
+		let yy = -20;
+
 		this.onUpdate.add(() => {
 			if (this.life <= 0 && this.y < posDieY) {
-				this.y += 20;
+				yy += 2;
+				this.y += yy;
 			}
 			this.modified();
 		});

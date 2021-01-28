@@ -8,6 +8,7 @@ declare const window: RPGAtsumaruWindow;
 export class MainScene extends g.Scene {
 	public addScore: (score: number) => void;
 	public playSound: (name: string) => void;
+	public isStart = false;
 
 	constructor(param: GameMainParameterObject) {
 		super({
@@ -18,6 +19,7 @@ export class MainScene extends g.Scene {
 				"score",
 				"time",
 				"start",
+				"bg",
 				"player",
 				"werpon",
 				"shot",
@@ -60,7 +62,7 @@ export class MainScene extends g.Scene {
 				width: g.game.width,
 				height: g.game.height,
 				cssColor: "gray",
-				parent:this
+				parent: this,
 			});
 
 			let maingame: MainGame;
@@ -102,8 +104,9 @@ export class MainScene extends g.Scene {
 					src: this.asset.getImageById("score"),
 					width: 192,
 					height: 64,
-					x: 700,
-					parent:this
+					x: 640,
+					y: 10,
+					parent: this,
 				});
 
 				// スコア表示用のラベル
@@ -113,19 +116,20 @@ export class MainScene extends g.Scene {
 					font: font,
 					fontSize: 32,
 					x: 750,
+					y: 10,
 					width: 450,
 					widthAutoAdjust: false,
 					textAlign: "right",
-					parent:this
+					parent: this,
 				});
 
 				//時間の時計アイコン
 				new g.Sprite({
 					scene: this,
 					src: this.asset.getImageById("time"),
-					x: 1000,
-					y: 645,
-					parent:this
+					x: 5,
+					y: 5,
+					parent: this,
 				});
 
 				// 残り時間表示用ラベル
@@ -134,9 +138,9 @@ export class MainScene extends g.Scene {
 					text: "0",
 					font: font,
 					fontSize: 32,
-					x: 1100,
-					y: 650,
-					parent:this
+					x: 105,
+					y: 10,
+					parent: this,
 				});
 
 				//スタート・終了表示用
@@ -149,7 +153,7 @@ export class MainScene extends g.Scene {
 					y: (g.game.height - 250) / 2,
 					frames: [0, 1],
 					frameNumber: 0,
-					parent:this
+					parent: this,
 				});
 
 				let btnReset: Button;
@@ -186,7 +190,7 @@ export class MainScene extends g.Scene {
 						scaleX: 2,
 						scaleY: 2.0,
 						touchable: true,
-						parent:this
+						parent: this,
 					});
 
 					btnConfig.onPointDown.add(() => {
@@ -232,8 +236,9 @@ export class MainScene extends g.Scene {
 						btnReset?.show();
 						btnRanking?.show();
 
-						this.onUpdate.remove(updateHandler);
+						this.isStart = false;
 
+						this.onUpdate.remove(updateHandler);
 						this.playSound("se_timeup");
 					}
 					// カウントダウン処理
@@ -263,7 +268,7 @@ export class MainScene extends g.Scene {
 						widthAutoAdjust: false,
 						textAlign: "right",
 						opacity: 0.0,
-						parent:this
+						parent: this,
 					});
 
 					timeline
@@ -301,6 +306,8 @@ export class MainScene extends g.Scene {
 					btnRanking?.hide();
 
 					this.playSound("se_start");
+
+					this.isStart = true;
 
 					this.onUpdate.add(updateHandler);
 				};

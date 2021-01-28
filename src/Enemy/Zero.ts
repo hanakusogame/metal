@@ -6,8 +6,10 @@ export class Zero extends Enemy {
 
 		this.order = 0;
 
-		this.y = g.game.random.get(-100, 100);
+		this.y = g.game.random.get(-100, 250);
 		this.modified();
+
+		this.speed = g.game.random.get(15, 30);
 
 		this.score = 1000;
 		this.life = 80;
@@ -71,6 +73,5 @@ export class Zero extends Enemy {
 			this.speed = this.speed / 2;
 		};
 
-		this.speed = g.game.random.get(24, 32);
 	}
 }
