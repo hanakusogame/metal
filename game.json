@@ -266,7 +266,10 @@
 		"niconico": {
 			"supportedModes": [
 				"ranking"
-			]
+			],
+			"preferredSessionParameters": {
+				"totalTimeLimit": 140
+			}
 		}
 	},
 	"globalScripts": [
