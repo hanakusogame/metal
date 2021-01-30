@@ -33,7 +33,7 @@ export class MainScene extends g.Scene {
 				"sniper",
 				"floor",
 				"effect",
-				"se",
+				"effect2",
 				"glyph",
 				"number",
 				"number_red",
@@ -43,6 +43,8 @@ export class MainScene extends g.Scene {
 				"se_start",
 				"se_timeup",
 				"se_shot",
+				"se_shot2",
+				"se_shot3",
 				"bomb",
 				"guaa"
 			],
@@ -77,7 +79,7 @@ export class MainScene extends g.Scene {
 				.create(sprTitle, {
 					modified: sprTitle.modified,
 				})
-				.wait(isDebug ? 1000 : 5000)
+				.wait(isDebug ? 1000 : 8000)
 				.moveBy(-1280, 0, 200)
 				.call(() => {
 					init();
@@ -145,6 +147,16 @@ export class MainScene extends g.Scene {
 					y: 10,
 					parent: this,
 				});
+
+				//点滅用
+				const sprFG = new g.FilledRect({
+					scene: this,
+					width: g.game.width,
+					height: g.game.height,
+					cssColor: "red",
+					opacity:0
+				});
+				this.append(sprFG);
 
 				//スタート・終了表示用
 				const stateSpr = new g.FrameSprite({
@@ -243,11 +255,21 @@ export class MainScene extends g.Scene {
 
 						this.onUpdate.remove(updateHandler);
 						this.playSound("se_timeup");
+
+						sprFG.cssColor = "black";
+						sprFG.opacity = 0.3;
+						sprFG.modified();
 					}
 					// カウントダウン処理
 					time -= 1 / g.game.fps;
 					timeLabel.text = "" + Math.ceil(time);
 					timeLabel.invalidate();
+
+					//ラスト5秒の点滅
+					if (time <= 5) {
+						sprFG.opacity = (time - Math.floor(time)) / 3;
+						sprFG.modified();
+					}
 				};
 
 				// スコア追加

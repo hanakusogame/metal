@@ -83,6 +83,19 @@ export class MainGame extends g.E {
 		let isPush = false; //タッチされているか
 		let radian = 0; //ショットの角度
 
+		// 攻撃風エフェクト
+		const effect = new g.Sprite({
+			scene: scene,
+			src: scene.asset.getImageById("effect2"),
+			width: 50,
+			height: 50,
+			srcY: 50,
+			scaleX: 2,
+			scaleY:2,
+			parent: this,
+		});
+		effect.hide();
+
 		//角度取得
 		const setAngle = (x: number, y: number): void => {
 			const px = player.x + player.width / 2;
@@ -189,6 +202,17 @@ export class MainGame extends g.E {
 				const bb = b as Enemy;
 				return aa.order * -10000 + aa.y + aa.sprImage.height - (bb.order * -10000 + bb.y + bb.sprImage.height);
 			});
+
+			//エフェクト表示
+			if (g.game.random.get(0, 30) === 0) {
+				effect.x = g.game.random.get(0, 300);
+				effect.y = g.game.random.get(500, 640);
+				effect.modified();
+				effect.show();
+				scene.setTimeout(() => {
+					effect.hide();
+				}, 100);
+			}
 
 			loopCnt++;
 		});

@@ -1,3 +1,4 @@
+import { MainScene } from "../MainScene";
 import { Enemy } from "./Enemy";
 //戦車クラス
 export class Tank extends Enemy {
@@ -12,7 +13,7 @@ export class Tank extends Enemy {
 		this.score = 1500;
 		this.life = 200;
 
-		const scene = g.game.scene();
+		const scene = g.game.scene() as MainScene;
 
 		//画像
 		this.sprImage = new g.Sprite({
@@ -22,6 +23,21 @@ export class Tank extends Enemy {
 			src: g.game.scene().asset.getImageById("tank"),
 			parent: this,
 		});
+
+		//攻撃してる風エフェクト
+		const effect = new g.Sprite({
+			scene: scene,
+			src: scene.asset.getImageById("effect2"),
+			x: -50,
+			y: 170,
+			width: 50,
+			height: 50,
+			srcX: 50,
+			scaleX: 2,
+			scaleY: 2,
+			parent: this,
+		});
+		effect.hide();
 
 		//壊れた時の画像
 		this.sprImageDie = new g.Sprite({
@@ -43,6 +59,20 @@ export class Tank extends Enemy {
 			cssColor: "yellow",
 			opacity: this.op,
 			parent: this,
+		});
+
+		this.onUpdate.add(() => {
+			if (this.life > 0) {
+				if (g.game.random.get(0, 100) === 0) {
+					//攻撃
+					effect.show();
+					scene.setTimeout(() => {
+						effect.hide();
+					}, 200);
+					scene.playSound("se_shot3");
+				}
+			}
+			this.modified();
 		});
 
 		this.die = () => {
@@ -75,6 +105,8 @@ export class Tank extends Enemy {
 
 			this.speed = 2;
 			this.scene.playSound("bomb");
+
+			effect.hide();
 		};
 
 		this.speed = g.game.random.get(3, 5);

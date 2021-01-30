@@ -16,12 +16,6 @@
 			"height": 50,
 			"path": "image/shot.png"
 		},
-		"se": {
-			"type": "audio",
-			"path": "audio/se",
-			"systemId": "sound",
-			"duration": 250
-		},
 		"_bootstrap": {
 			"type": "script",
 			"path": "script/_bootstrap.js",
@@ -256,6 +250,24 @@
 			"path": "audio/se_shot",
 			"systemId": "sound",
 			"duration": 74
+		},
+		"effect2": {
+			"type": "image",
+			"width": 100,
+			"height": 100,
+			"path": "image/effect2.png"
+		},
+		"se_shot2": {
+			"type": "audio",
+			"path": "audio/se_shot2",
+			"systemId": "sound",
+			"duration": 1093
+		},
+		"se_shot3": {
+			"type": "audio",
+			"path": "audio/se_shot3",
+			"systemId": "sound",
+			"duration": 3463
 		}
 	},
 	"moduleMainScripts": {

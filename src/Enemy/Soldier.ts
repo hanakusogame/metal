@@ -1,3 +1,4 @@
+import { MainScene } from "../MainScene";
 import { Enemy } from "./Enemy";
 //ソルジャークラス
 export class Soldier extends Enemy {
@@ -9,7 +10,7 @@ export class Soldier extends Enemy {
 		this.y = g.game.random.get(400, 550);
 		this.modified();
 
-		const scene = g.game.scene();
+		const scene = g.game.scene() as MainScene;
 
 		this.score = 200;
 		this.life = 30;
@@ -30,6 +31,18 @@ export class Soldier extends Enemy {
 
 		this.sprImage = spr;
 
+		const effect = new g.Sprite({
+			scene: scene,
+			src: scene.asset.getImageById("effect2"),
+			x: -30,
+			y: 20,
+			width: 50,
+			height: 50,
+			srcX: 50,
+			parent: this,
+		});
+		effect.hide();
+
 		const sprDie = new g.FrameSprite({
 			scene: scene,
 			x: 0,
@@ -47,6 +60,20 @@ export class Soldier extends Enemy {
 
 		this.sprImageDie = sprDie;
 
+		this.onUpdate.add(() => {
+			if (this.life > 0) {
+				if (g.game.random.get(0, 20) === 0) {
+					//攻撃
+					effect.show();
+					scene.setTimeout(() => {
+						effect.hide();
+					}, 100);
+					scene.playSound("se_shot2");
+				}
+			}
+			this.modified();
+		});
+
 		this.collisionArea = new g.FilledRect({
 			scene: scene,
 			x: 16,
@@ -62,6 +89,7 @@ export class Soldier extends Enemy {
 			sprDie.start();
 			this.speed = 2;
 			this.scene.playSound("guaa");
+			effect.hide();
 		};
 
 		this.speed = g.game.random.get(4, 8);
