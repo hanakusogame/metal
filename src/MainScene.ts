@@ -46,7 +46,7 @@ export class MainScene extends g.Scene {
 				"se_shot2",
 				"se_shot3",
 				"bomb",
-				"guaa"
+				"guaa",
 			],
 		});
 
@@ -54,6 +54,7 @@ export class MainScene extends g.Scene {
 		const timeLimit = 120; // 制限時間
 		const isDebug = false;
 		let time = 0;
+		const version = "var. 1.02";
 
 		// 市場コンテンツのランキングモードでは、g.game.vars.gameState.score の値をスコアとして扱います
 		g.game.vars.gameState = { score: 0 };
@@ -68,6 +69,12 @@ export class MainScene extends g.Scene {
 				height: g.game.height,
 				cssColor: "gray",
 				parent: this,
+				opacity: (param.isAtsumaru || isDebug) ? 1.0 : 0.5
+			});
+
+			const base = new g.E({
+				scene: this,
+				parent: this
 			});
 
 			let maingame: MainGame;
@@ -75,6 +82,22 @@ export class MainScene extends g.Scene {
 			// タイトル
 			const sprTitle = new g.Sprite({ scene: this, src: this.asset.getImageById("title"), x: 0 });
 			this.append(sprTitle);
+
+			const font = new g.DynamicFont({
+				game: g.game,
+				fontFamily: "monospace",
+				size: 24,
+			});
+
+			//バージョン情報
+			new g.Label({
+				scene: this,
+				font: font,
+				fontSize: 24,
+				text: version,
+				parent: sprTitle,
+			});
+
 			timeline
 				.create(sprTitle, {
 					modified: sprTitle.modified,
@@ -154,7 +177,7 @@ export class MainScene extends g.Scene {
 					width: g.game.width,
 					height: g.game.height,
 					cssColor: "red",
-					opacity:0
+					opacity: 0,
 				});
 				this.append(sprFG);
 
@@ -239,7 +262,7 @@ export class MainScene extends g.Scene {
 							const boardId = 1;
 							const board = window.RPGAtsumaru.scoreboards;
 							board.setRecord(boardId, g.game.vars.gameState.score).then(() => {
-								board.display(boardId);
+								//board.display(boardId);
 							});
 						}
 
@@ -311,7 +334,7 @@ export class MainScene extends g.Scene {
 				const reset = (): void => {
 					maingame?.destroy();
 					maingame = new MainGame();
-					bg.append(maingame);
+					base.append(maingame);
 					time = timeLimit;
 					timeLabel.text = "" + time;
 					timeLabel.invalidate();
@@ -333,6 +356,10 @@ export class MainScene extends g.Scene {
 					this.playSound("se_start");
 
 					this.isStart = true;
+
+					sprFG.opacity = 0;
+					sprFG.cssColor = "red";
+					sprFG.modified();
 
 					this.onUpdate.add(updateHandler);
 				};

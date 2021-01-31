@@ -6,7 +6,7 @@ export class Enemy extends g.E {
 	public sprImageDie: g.E;
 	public collisionArea: g.FilledRect;
 	public die: () => void;
-	public readonly op = 0;
+	public readonly op = 0.0;
 	public score = 200;
 	public order = 0;
 	public life = 100;
