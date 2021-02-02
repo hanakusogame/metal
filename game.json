@@ -249,7 +249,7 @@
 			"type": "audio",
 			"path": "audio/se_shot",
 			"systemId": "sound",
-			"duration": 74
+			"duration": 3463
 		},
 		"effect2": {
 			"type": "image",

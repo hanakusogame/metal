@@ -54,7 +54,17 @@ export class MainScene extends g.Scene {
 		const timeLimit = 120; // 制限時間
 		const isDebug = false;
 		let time = 0;
-		const version = "var. 1.02";
+		const version = "ver. 1.04";
+
+		// ミニゲームチャット用モードの取得と乱数シード設定
+		let mode = "";
+		if (typeof window !== "undefined") {
+			const url = new URL(location.href);
+			const seed = url.searchParams.get("date");
+			// eslint-disable-next-line radix
+			if (seed) g.game.random = new g.XorshiftRandomGenerator(parseInt(seed));
+			mode = url.searchParams.get("mode");
+		}
 
 		// 市場コンテンツのランキングモードでは、g.game.vars.gameState.score の値をスコアとして扱います
 		g.game.vars.gameState = { score: 0 };
@@ -69,12 +79,12 @@ export class MainScene extends g.Scene {
 				height: g.game.height,
 				cssColor: "gray",
 				parent: this,
-				opacity: (param.isAtsumaru || isDebug) ? 1.0 : 0.5
+				opacity: param.isAtsumaru || isDebug ? 1.0 : 0.5,
 			});
 
 			const base = new g.E({
 				scene: this,
-				parent: this
+				parent: this,
 			});
 
 			let maingame: MainGame;
@@ -197,7 +207,7 @@ export class MainScene extends g.Scene {
 				let btnReset: Button;
 				let btnRanking: Button;
 
-				if (param.isAtsumaru || isDebug) {
+				if (param.isAtsumaru || isDebug || mode === "game") {
 					// リセットボタン
 					btnReset = new Button(this, ["リセット"], 1000, 520, 130);
 					btnReset.scale(2.0);
@@ -216,8 +226,9 @@ export class MainScene extends g.Scene {
 					btnRanking.pushEvent = () => {
 						//スコアを入れ直す応急措置
 						//window.RPGAtsumaru.scoreboards.setRecord(1, g.game.vars.gameState.score).then(() => {
-						window.RPGAtsumaru.scoreboards.display(1);
+						//window.RPGAtsumaru.scoreboards.display(1);
 						//});
+						window.RPGAtsumaru.scoreboards.display(1);
 					};
 
 					//コンフィグ表示ボタン
@@ -257,13 +268,19 @@ export class MainScene extends g.Scene {
 
 				const updateHandler = (): void => {
 					if (time <= 0) {
-						// RPGアツマール環境であればランキングを表示します
+						// RPGアツマール環境であればランキングを設定
 						if (param.isAtsumaru) {
 							const boardId = 1;
 							const board = window.RPGAtsumaru.scoreboards;
 							board.setRecord(boardId, g.game.vars.gameState.score).then(() => {
 								//board.display(boardId);
 							});
+						}
+
+						// ミニゲームチャット用ランキング設定
+						if (mode === "game") {
+							(window as Window).parent.postMessage({ score: g.game.vars.gameState.score, id: 1 }, "*");
+							btnReset.show();
 						}
 
 						//終了表示
