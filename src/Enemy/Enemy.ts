@@ -11,7 +11,7 @@ export class Enemy extends g.E {
 	public order = 0;
 	public life = 100;
 	public scene: MainScene;
-	protected speed = 10;
+	protected speed = 110;
 
 	constructor(base: g.E) {
 		super({
