@@ -5,3 +5,4 @@ export function main(param: GameMainParameterObject): void {
 	const scene = new MainScene(param);
 	g.game.pushScene(scene);
 }
+// test
